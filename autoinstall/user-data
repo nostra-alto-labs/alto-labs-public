@@ -3,7 +3,7 @@ autoinstall:
   version: 1
   identity:
     hostname: alto-nuc-xxx
-    password: "$6$LygT1slPZ.tCgY3q$VbT0Rgq7/4LYUjWbhdQsquNflJRgrqvoOrxHvwYpo1rF8RxnX3K5WRvdhXeuT6QvclkZSU.sJhH1qE0x6QW/w/"
+    password: "$6$YbtIsQZJWYgP5GrV$PZUN4P4cexO.7K7guvrKMSNsD1c2zphnx9mWj2UOqV/ruENH1wBXBPsKARcnwfwa.80MgNqZjLYuUR9.iCel0/"
     username: provision
 
   locale: en_US
