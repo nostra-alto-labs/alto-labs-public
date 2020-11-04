@@ -45,7 +45,7 @@ echo ""
 
 export ANSIBLE_VAULT_IDENTITY_LIST=alto_nuc_$siteid@prompt
 
-while ! pipenv run ansible-playbook initial-provisioning.yml --extra-vars target_hostname=alto-nuc-$siteid; do
+while ! pipenv run ansible-playbook initial-provisioning.yml --extra-vars "target_hostname=alto-nuc-$siteid site_id=$siteid"; do
   echo "Retrying..."
 done
 
