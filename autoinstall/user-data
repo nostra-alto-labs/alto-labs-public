@@ -1,10 +1,6 @@
 #cloud-config
 autoinstall:
   version: 1
-  identity:
-    hostname: alto-nuc-xxx
-    password: "$6$YbtIsQZJWYgP5GrV$PZUN4P4cexO.7K7guvrKMSNsD1c2zphnx9mWj2UOqV/ruENH1wBXBPsKARcnwfwa.80MgNqZjLYuUR9.iCel0/"
-    username: provision
 
   locale: en_US
 
@@ -27,6 +23,9 @@ autoinstall:
         br0:
           interfaces: [ eno1 ]
           dhcp4: true
+        delay-vm-br0:
+          dhcp6: no
+          dhcp4: no
 
   storage:
     config:
@@ -62,11 +61,24 @@ autoinstall:
    - virtinst
    - cloud-image-utils
    - ansible
+   - pipenv
+
+  user-data:
+   hostname: alto-nuc-xxx
+   users:
+    - name: provision
+      lock-passwd: false
+      passwd: "$6$YbtIsQZJWYgP5GrV$PZUN4P4cexO.7K7guvrKMSNsD1c2zphnx9mWj2UOqV/ruENH1wBXBPsKARcnwfwa.80MgNqZjLYuUR9.iCel0/"
+      shell: /opt/alto/bin/provision-kvm.sh
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      groups: adm, users, sudo, libvirt
 
   late-commands:
    - mkdir -p /target/opt/alto/bin/
    - mkdir -p /target/opt/alto/images/
+   - mkdir -p /target/opt/alto/vms/
+   - wget https://raw.githubusercontent.com/nostra-alto-labs/alto-labs-public/master/provision-kvm.sh -O /target/opt/alto/bin/provision-kvm.sh
+   - chmod 755 /target/opt/alto/bin/provision-kvm.sh
    - curtin in-target --target=/target -- apt update
    - curtin in-target --target=/target -- apt upgrade -y
    - halt -p
-
