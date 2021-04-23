@@ -25,11 +25,13 @@ done
 echo "Starting provisioning for site: $siteid"
 echo ""
 
-## Ask for the password & clone git repo.
-## Repeat the tasks until password is correct.
+## Run GitHub OAuth script and clone the repository.
+## Repeat the tasks until repository is cloned.
 
-while ! git clone https://nostra-labs-readonly@github.com/nostra-alto-labs/alto-labs; do
-  echo "Retrying..."
+while ! python3 /opt/alto/bin/oauth.py; do
+  echo "Generating new authorization token..."
+  echo ""
+  echo ""
 done
 
 
