@@ -16,7 +16,7 @@ autoinstall:
     network:
       version: 2
       ethernets:
-        eno1:
+        enp89s0:
           dhcp6: no
           dhcp4: no
       bridges:
