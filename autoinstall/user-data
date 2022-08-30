@@ -21,7 +21,7 @@ autoinstall:
           dhcp4: no
       bridges:
         br0:
-          interfaces: [ eno1 ]
+          interfaces: [ enp89s0 ]
           dhcp4: true
         delay-vm-br0:
           dhcp6: no
@@ -30,7 +30,7 @@ autoinstall:
   storage:
     config:
     - {ptable: gpt,
-      path: /dev/sda, wipe: superblock, preserve: false, name: '', grub_device: false,
+      path: /dev/nvme0n1, wipe: superblock, preserve: false, name: '', grub_device: false,
       type: disk, id: disk-sda}
     - {device: disk-sda, size: 512MB, wipe: superblock, flag: boot, number: 1,
       preserve: false, grub_device: true, type: partition, id: partition-0}
