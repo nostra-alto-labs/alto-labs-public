@@ -37,8 +37,10 @@ done
 
 ### Change directory to alto-labs/ansible/ and setup pip environment.
 ### Note: we cannot use pipenv shell here.
-
+apt remove pipenv -y
+pip3 install pipenv
 cd alto-labs/ansible/stratus/
+rm Pipfile
 pipenv install
 echo ""
 
@@ -47,6 +49,7 @@ echo ""
 
 export ANSIBLE_VAULT_IDENTITY_LIST=alto_nuc_$siteid@prompt
 
+echo Starting ansible initial-provisioning playbook
 while ! pipenv run ansible-playbook initial-provisioning.yml --extra-vars "target_hostname=alto-nuc-$siteid site_id=$siteid"; do
   echo "Retrying..."
 done
