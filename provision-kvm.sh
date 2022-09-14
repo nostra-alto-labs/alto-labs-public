@@ -54,20 +54,20 @@ done
 ### Run other tasks...
 echo "Is it Gen11 node [Yes|No]:"
 read gen11
-  if [ $gen11 -eq "Yes" ] 
-  then
-    echo ""
-    echo "Gen11 selected, need to upgrade kernel to fix network driver bug"
-    wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
-    wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547_5.15.47-051547.202206141802_all.deb
-    wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-image-unsigned-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
-    wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-modules-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
+if [ $gen11 == "Yes" ] 
+then
+  echo ""
+  echo "Gen11 selected, need to upgrade kernel to fix network driver bug"
+  wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
+  wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547_5.15.47-051547.202206141802_all.deb
+  wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-image-unsigned-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
+  wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-modules-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
 
-    sudo dpkg -i *.deb
-    sudo apt -f install -y
-    sudo apt --fix-broken install -y
-    rm -rf linux-*
-  fi
+  sudo dpkg -i *.deb
+  sudo apt -f install -y
+  sudo apt --fix-broken install -y
+  rm -rf linux-*
+fi
 
 echo ""
 echo "End of initial provisioning"
