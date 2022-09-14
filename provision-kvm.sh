@@ -65,7 +65,7 @@ then
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-image-unsigned-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-modules-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
 
-  sudo dpkg -i *.deb
+  sudo dpkg -i *.deb || true
   sudo apt -f install -y
   sudo apt --fix-broken install -y
   rm -rf linux-*
