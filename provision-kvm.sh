@@ -37,10 +37,7 @@ done
 
 ### Change directory to alto-labs/ansible/ and setup pip environment.
 ### Note: we cannot use pipenv shell here.
-apt remove pipenv -y
-pip3 install pipenv
 cd alto-labs/ansible/stratus/
-rm Pipfile
 pipenv install
 echo ""
 
