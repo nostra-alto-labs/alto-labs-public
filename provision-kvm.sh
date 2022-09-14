@@ -67,6 +67,7 @@ then
   sudo apt -f install -y
   sudo apt --fix-broken install -y
   rm -rf linux-*
+  echo "End of kernel patching for Gen11 - please reboot after initial provisioning is finished"
 fi
 
 echo ""
