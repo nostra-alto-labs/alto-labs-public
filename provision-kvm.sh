@@ -60,7 +60,6 @@ then
   echo "Gen11 selected, need to upgrade kernel to fix network driver bug"
   ip route del default
   dhclient br0
-  ip route add default via 192.168.1.1
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547_5.15.47-051547.202206141802_all.deb
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-image-unsigned-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
