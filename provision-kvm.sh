@@ -58,17 +58,17 @@ if [ $gen11 == "Yes" ]
 then
   echo ""
   echo "Gen11 selected, need to upgrade kernel to fix network driver bug"
-  sudo ip route del default
-  sudo dhclient br0
+  sudo ip route del default || true
+  sudo dhclient br0 || true
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-headers-5.15.47-051547_5.15.47-051547.202206141802_all.deb
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-image-unsigned-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
   wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.47/amd64/linux-modules-5.15.47-051547-generic_5.15.47-051547.202206141802_amd64.deb
 
   sudo dpkg -i *.deb || true
-  sudo apt -f install -y
-  sudo apt --fix-broken install -y
-  rm -rf linux-*
+  sudo apt -f install -y || true
+  sudo apt --fix-broken install -y || true
+  rm -rf linux-* || true
   echo "End of kernel patching for Gen11 - please reboot after initial provisioning is finished"
 fi
 
