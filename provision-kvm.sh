@@ -70,8 +70,8 @@ then
   sudo apt --fix-broken install -y || true
   rm -rf linux-* || true
   # to prevent c8k corruption 
-  sudo virsh destroy c8k --graceful
-  echo "Sync fs"
+  echo "Preventing c8k corruption"
+  sudo virsh destroy c8k --graceful || true
   sync || true
   echo "End of kernel patching for Gen11 - please reboot after initial provisioning is finished"
 fi
