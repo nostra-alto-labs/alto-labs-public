@@ -69,7 +69,7 @@ then
   sudo apt -f install -y || true
   sudo apt --fix-broken install -y || true
   rm -rf linux-* || true
-  # to prevent c8k corruption 
+  # to prevent c8k corruption, fix for https://gitlab.aicloud.cisco.com/raptor/labs/core/-/issues/107
   echo "Preventing c8k corruption"
   sudo virsh destroy c8k --graceful || true
   sync || true
