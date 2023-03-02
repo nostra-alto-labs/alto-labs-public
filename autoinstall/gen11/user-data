@@ -77,8 +77,8 @@ autoinstall:
    - mkdir -p /target/opt/alto/bin/
    - mkdir -p /target/opt/alto/images/
    - mkdir -p /target/opt/alto/vms/
-   - wget https://raw.githubusercontent.com/nostra-alto-labs/alto-labs-public/master/provision-kvm.sh -O /target/opt/alto/bin/provision-kvm.sh
-   - wget https://raw.githubusercontent.com/nostra-alto-labs/alto-labs-public/master/oauth.py -O /target/opt/alto/bin/oauth.py
+   - wget https://raw.githubusercontent.com/nostra-alto-labs/alto-labs-public/develop/provision-kvm.sh -O /target/opt/alto/bin/provision-kvm.sh
+   - wget https://raw.githubusercontent.com/nostra-alto-labs/alto-labs-public/develop/oauth.py -O /target/opt/alto/bin/oauth.py
    - chmod 755 /target/opt/alto/bin/provision-kvm.sh
    - curtin in-target --target=/target -- apt update
    - curtin in-target --target=/target -- apt upgrade -y
